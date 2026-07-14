@@ -39,11 +39,15 @@ body{
 /* ---------- floating follow bar ---------- */
 .follow-bar{
   position:sticky; top:0; z-index:50;
-  display:flex; justify-content:flex-end; gap:8px;
+  display:flex; align-items:center; justify-content:flex-end; gap:10px;
   padding:12px 16px;
   backdrop-filter: blur(8px);
   background:rgba(247,242,231,0.75);
   border-bottom:1px solid rgba(15,92,102,0.08);
+}
+.follow-bar .author-name{
+  font-size:13px; font-weight:700;
+  color:var(--lagoon-deep);
 }
 .follow-btn{
   display:flex; align-items:center; gap:6px;
@@ -230,6 +234,69 @@ body{
 .item input:checked ~ .label-wrap .label{ color:#a9b8ba; text-decoration:line-through; }
 .item input:checked ~ .label-wrap .note{ color:#c3cfd1; }
 
+/* ---------- mindset section ---------- */
+.mindset{
+  margin-top:32px;
+  background:linear-gradient(160deg, #fde8de, #fbf1e4);
+  border:1px solid rgba(242,121,92,0.18);
+  border-radius:24px;
+  padding:28px 24px;
+  position:relative;
+  overflow:hidden;
+}
+.mindset::after{
+  content:"";
+  position:absolute; left:-30px; top:-30px;
+  width:140px; height:140px; border-radius:50%;
+  background:rgba(242,121,92,0.08);
+}
+.mindset .mind-head{
+  display:flex; align-items:center; gap:10px; margin-bottom:6px;
+  position:relative; z-index:1;
+}
+.mindset .mind-head h2{
+  font-family:'Fraunces', serif; font-weight:600;
+  font-size:22px; margin:0; color:var(--coral);
+}
+.mindset p.mind-sub{
+  font-size:13.5px; color:var(--ink-soft); margin:0 0 20px; max-width:520px; line-height:1.6;
+  position:relative; z-index:1;
+}
+.mind-list{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+  position:relative; z-index:1;
+}
+@media(max-width:640px){ .mind-list{ grid-template-columns:1fr; } }
+.mind-item{
+  background:var(--white);
+  border-radius:16px; padding:16px 18px;
+  display:flex; align-items:flex-start; gap:12px;
+  box-shadow:0 4px 14px rgba(242,121,92,0.08);
+  cursor:pointer; user-select:none;
+  transition:box-shadow .18s ease;
+}
+.mind-item input{ display:none; }
+.mind-item .mind-icon{
+  width:34px; height:34px; border-radius:50%; flex:none;
+  background:var(--coral-soft);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px;
+  position:relative;
+}
+.mind-item .mind-icon .emoji{ transition:opacity .18s ease; }
+.mind-item .mind-icon .mind-badge{
+  position:absolute; inset:0; border-radius:50%;
+  background:var(--coral);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; transform:scale(.4);
+  transition:all .2s ease;
+}
+.mind-item .mind-icon .mind-badge svg{ width:16px; height:16px; }
+.mind-item input:checked ~ .mind-icon .emoji{ opacity:0; }
+.mind-item input:checked ~ .mind-icon .mind-badge{ opacity:1; transform:scale(1); }
+.mind-item p{ margin:0; font-size:13.5px; line-height:1.6; color:var(--ink); transition:color .18s ease; }
+.mind-item input:checked ~ p{ color:#d8a99a; text-decoration:line-through; }
+
 /* ---------- local buy section ---------- */
 .localbuy{
   margin-top:44px;
@@ -341,6 +408,7 @@ body{
     <svg viewBox="0 0 16 16" fill="currentColor"><path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161"/></svg>
     Threads
   </a>
+  <span class="author-name">駱葳 Grace</span>
 </div>
 
 <div class="hero">
@@ -390,6 +458,36 @@ body{
       </a>
     </div>
   </div>
+
+  <div class="mindset">
+    <div class="mind-head">
+      <span style="font-size:22px;">🌤️</span>
+      <h2>心態準備</h2>
+    </div>
+    <p class="mind-sub">行李收好了，心態也一起打包吧。<br>這幾點也可以打勾提醒自己喔，只是不會算進上面的行李收拾進度裡。</p>
+    <div class="mind-list">
+      <label class="mind-item">
+        <input type="checkbox">
+        <span class="mind-icon"><span class="emoji">🐢</span><span class="mind-badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span></span>
+        <p>放慢步調，練習耐心，學著擁抱旅途中的「不確定性」</p>
+      </label>
+      <label class="mind-item">
+        <input type="checkbox">
+        <span class="mind-icon"><span class="emoji">🔒</span><span class="mind-badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span></span>
+        <p>留意財物安全是基本功，但不需要因此過度緊張、綁手綁腳</p>
+      </label>
+      <label class="mind-item">
+        <input type="checkbox">
+        <span class="mind-icon"><span class="emoji">🌺</span><span class="mind-badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span></span>
+        <p>對當地文化保持好奇，用欣賞的眼光看待生活習慣的不同</p>
+      </label>
+      <label class="mind-item">
+        <input type="checkbox">
+        <span class="mind-icon"><span class="emoji">📱</span><span class="mind-badge"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span></span>
+        <p>手機、錢包不要一直拿在手上滑，走在路上或搭車時盡量收好</p>
+      </label>
+    </div>
+  </div>
 </div>
 
 <div class="footer">
@@ -417,7 +515,7 @@ const DATA = {
     categories: [
       { icon:"📄", title:"重要文件類", items:[
         "護照正本","來回機票影本","簽證","入學通知","護照影本／證件照備份雲端",
-        "當地 SIM 卡／上網卡@@訊號差可打電話","現金：美金","信用卡",
+        "當地 SIM 卡／eSIM@@提前確認如何開通及使用方式","現金：美金","信用卡",
         "提款卡@@先開通跨國提款","eTravel QR code 截圖","緊急聯絡人資訊卡"
       ]},
       { icon:"🧴", title:"個人用品類", items:[
@@ -428,14 +526,16 @@ const DATA = {
         "夾鏈袋／收納袋@@分裝小物","個人習慣的衛生棉／棉條"
       ]},
       { icon:"🔌", title:"3C 電器類", items:[
-        "行動電源","手機充電線","220V 吹風機","萬用轉接頭@@宿舍共用插座","筆電／平板＋充電線"
+        "行動電源","手機充電線","220V 吹風機","萬用轉接頭@@宿舍共用插座","筆電／平板＋充電線",
+        "提前下載好 Grab／Move It@@叫車用"
       ]},
       { icon:"👕", title:"衣物服飾類", items:[
         "夏季日常衣物","運動鞋","快乾毛巾","防滑室外拖鞋／涼鞋","防曬防風薄外套",
         "泳衣／水母衣","隨身小包包"
       ]},
       { icon:"🍜", title:"飲食相關", items:[
-        "台灣泡麵","耐熱泡麵碗","健身補給品隨身包","零食","白飯香鬆","飲料提袋、購物袋"
+        "台灣泡麵","耐熱泡麵碗","健身補給品隨身包","零食",
+        "白飯香鬆@@避開肉類，也可到當地超市購買日本品牌的香鬆","飲料提袋、購物袋"
       ]},
       { icon:"💌", title:"其他", items:[
         "可愛卡片"
@@ -453,7 +553,7 @@ const DATA = {
     categories: [
       { icon:"📄", title:"重要文件類", items:[
         "護照正本","來回機票影本","簽證","護照影本／證件照備份雲端",
-        "當地 SIM 卡／上網卡@@訊號差可打電話","現金：美金","提款卡@@先開通跨國提款",
+        "當地 SIM 卡／eSIM@@提前確認如何開通及使用方式","現金：美金","提款卡@@先開通跨國提款",
         "信用卡","eTravel QR code 截圖","緊急聯絡人資訊卡"
       ]},
       { icon:"🧴", title:"個人用品類", items:[
@@ -463,7 +563,7 @@ const DATA = {
         "液態 OK 蹦","夾鏈袋／收納袋@@分裝小物","個人習慣的衛生棉／棉條"
       ]},
       { icon:"🔌", title:"3C 電器類", items:[
-        "行動電源","手機充電線","220V 吹風機"
+        "行動電源","手機充電線","220V 吹風機","提前下載好 Grab／Move It@@叫車用"
       ]},
       { icon:"👕", title:"衣物服飾類", items:[
         "夏季日常衣物","運動鞋","快乾毛巾","防滑室外拖鞋／涼鞋","防曬防風薄外套",
