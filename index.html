@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>出發宿霧！行前準備清單 🇵🇭</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --lagoon-deep:   #0f5c66;
+  --lagoon:        #1c7f83;
+  --seafoam:       #bfe3d4;
+  --sand:          #f7f2e7;
+  --sand-deep:     #ece2cc;
+  --coral:         #f2795c;
+  --coral-soft:    #f9b79f;
+  --ink:           #16333a;
+  --ink-soft:      #3f5e63;
+  --white:         #ffffff;
+  --shadow:        0 8px 24px rgba(15,92,102,0.12);
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  background:
+    radial-gradient(1200px 500px at 90% -10%, rgba(191,227,212,0.55), transparent 60%),
+    radial-gradient(900px 500px at 5% 0%, rgba(242,121,92,0.10), transparent 55%),
+    var(--sand);
+  color:var(--ink);
+  font-family:'Plus Jakarta Sans', sans-serif;
+  min-height:100vh;
+  padding-bottom:60px;
+}
+
+::selection{ background:var(--coral-soft); }
+
+/* ---------- floating follow bar ---------- */
+.follow-bar{
+  position:sticky; top:0; z-index:50;
+  display:flex; justify-content:flex-end; gap:8px;
+  padding:12px 16px;
+  backdrop-filter: blur(8px);
+  background:rgba(247,242,231,0.75);
+  border-bottom:1px solid rgba(15,92,102,0.08);
+}
+.follow-btn{
+  display:flex; align-items:center; gap:6px;
+  padding:8px 14px;
+  border-radius:999px;
+  background:var(--white);
+  border:1.5px solid var(--lagoon);
+  color:var(--lagoon-deep);
+  font-weight:700; font-size:13px;
+  text-decoration:none;
+  transition:transform .15s ease, background .15s ease, color .15s ease;
+  white-space:nowrap;
+}
+.follow-btn:hover{ background:var(--lagoon-deep); color:var(--white); transform:translateY(-2px); }
+.follow-btn svg{ width:16px; height:16px; flex:none; }
+
+/* ---------- hero ---------- */
+.hero{
+  max-width:820px; margin:0 auto;
+  padding:36px 20px 10px;
+  text-align:center;
+}
+.hero .eyebrow{
+  display:inline-block;
+  font-size:12.5px; font-weight:700; letter-spacing:.14em;
+  color:var(--lagoon-deep);
+  background:var(--seafoam);
+  padding:6px 14px; border-radius:999px;
+  margin-bottom:16px;
+}
+.hero h1{
+  font-family:'Fraunces', serif;
+  font-weight:600;
+  font-size:clamp(30px, 6vw, 48px);
+  line-height:1.15;
+  margin:0 0 12px;
+  color:var(--lagoon-deep);
+}
+.hero h1 span{ color:var(--coral); font-style:italic; }
+.hero p.sub{
+  color:var(--ink-soft);
+  font-size:15.5px;
+  max-width:520px; margin:0 auto;
+  line-height:1.7;
+}
+
+.wave-divider{ display:block; width:100%; height:auto; margin-top:18px; }
+
+/* ---------- tabs (boarding-pass style) ---------- */
+.tabs-wrap{
+  max-width:520px; margin:22px auto 6px;
+  padding:0 20px;
+}
+.tabs{
+  display:flex; background:var(--white);
+  border-radius:16px; padding:6px;
+  box-shadow:var(--shadow);
+  position:relative;
+}
+.tab-btn{
+  flex:1; text-align:center; padding:12px 10px;
+  border:none; background:transparent; cursor:pointer;
+  font-family:'Plus Jakarta Sans', sans-serif;
+  font-weight:800; font-size:15px;
+  color:var(--ink-soft);
+  border-radius:11px;
+  transition:color .2s ease;
+  position:relative; z-index:2;
+}
+.tab-btn .tag{ display:block; font-size:11px; font-weight:600; letter-spacing:.06em; opacity:.7; margin-top:2px;}
+.tab-btn.active{ color:var(--white); }
+.tab-highlight{
+  position:absolute; top:6px; bottom:6px; left:6px;
+  width:calc(50% - 6px);
+  background:linear-gradient(135deg, var(--lagoon), var(--lagoon-deep));
+  border-radius:11px;
+  transition:transform .28s cubic-bezier(.65,0,.35,1);
+  z-index:1;
+}
+.tabs[data-active="travel"] .tab-highlight{ transform:translateX(100%); }
+
+/* ---------- progress ---------- */
+.progress-wrap{
+  max-width:520px; margin:18px auto 0; padding:0 20px;
+}
+.progress-label{
+  display:flex; justify-content:space-between;
+  font-size:12.5px; font-weight:700; color:var(--ink-soft);
+  margin-bottom:6px;
+}
+.progress-track{
+  height:8px; border-radius:999px; background:var(--sand-deep);
+  overflow:hidden;
+}
+.progress-fill{
+  height:100%; border-radius:999px;
+  background:linear-gradient(90deg, var(--coral), var(--coral-soft));
+  width:0%; transition:width .3s ease;
+}
+
+/* ---------- content container ---------- */
+.container{ max-width:820px; margin:0 auto; padding:28px 20px 0; }
+
+.note-banner{
+  background:var(--white);
+  border:1.5px dashed var(--lagoon);
+  border-radius:16px;
+  padding:14px 18px;
+  font-size:13.5px;
+  color:var(--ink-soft);
+  margin-bottom:26px;
+  display:flex; align-items:center; gap:10px;
+}
+.note-banner b{ color:var(--lagoon-deep); }
+
+.section-title{
+  display:flex; align-items:center; gap:10px;
+  margin:34px 0 14px;
+}
+.section-title h2{
+  font-family:'Fraunces', serif;
+  font-size:22px; font-weight:600; margin:0;
+  color:var(--lagoon-deep);
+}
+.section-title .line{ flex:1; height:1px; background:linear-gradient(90deg, var(--lagoon), transparent); }
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:16px;
+}
+@media(max-width:640px){ .grid{ grid-template-columns:1fr; } }
+
+.card{
+  background:var(--white);
+  border-radius:18px;
+  padding:18px 18px 8px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";
+  position:absolute; left:0; top:0; bottom:0; width:5px;
+  background:var(--coral);
+}
+.card-head{
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:8px;
+}
+.card-head .stamp{
+  width:34px; height:34px; border-radius:50%;
+  background:var(--seafoam);
+  display:flex; align-items:center; justify-content:center;
+  font-size:17px; flex:none;
+}
+.card-head h3{
+  font-size:15.5px; font-weight:800; margin:0;
+  color:var(--ink);
+}
+
+.item{
+  display:flex; align-items:flex-start; gap:10px;
+  padding:8px 2px;
+  border-bottom:1px solid #f1ece1;
+  cursor:pointer;
+  user-select:none;
+}
+.item:last-child{ border-bottom:none; }
+.item input{ display:none; }
+.checkmark{
+  width:20px; height:20px; border-radius:7px;
+  border:2px solid var(--seafoam);
+  flex:none; margin-top:1px;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .18s ease;
+}
+.checkmark svg{ width:12px; height:12px; opacity:0; transform:scale(.5); transition:all .18s ease; }
+.item input:checked + .checkmark{ background:var(--lagoon-deep); border-color:var(--lagoon-deep); }
+.item input:checked + .checkmark svg{ opacity:1; transform:scale(1); }
+.item .label-wrap{ display:flex; flex-direction:column; gap:2px; }
+.item span.label{ font-size:14px; line-height:1.4; color:var(--ink); transition:color .18s ease; }
+.item span.note{ font-size:11px; line-height:1.3; color:#93a7aa; }
+.item input:checked ~ .label-wrap .label{ color:#a9b8ba; text-decoration:line-through; }
+.item input:checked ~ .label-wrap .note{ color:#c3cfd1; }
+
+/* ---------- local buy section ---------- */
+.localbuy{
+  margin-top:44px;
+  background:linear-gradient(160deg, #d9f0e6, #f3ecda);
+  border:1px solid rgba(15,92,102,0.1);
+  border-radius:24px;
+  padding:30px 24px;
+  color:var(--ink);
+  position:relative;
+  overflow:hidden;
+}
+.localbuy::after{
+  content:"";
+  position:absolute; right:-40px; bottom:-40px;
+  width:180px; height:180px; border-radius:50%;
+  background:rgba(15,92,102,0.05);
+}
+.localbuy .lb-head{
+  display:flex; align-items:center; gap:10px; margin-bottom:6px;
+}
+.localbuy .lb-head h2{
+  font-family:'Fraunces', serif; font-weight:600;
+  font-size:22px; margin:0; color:var(--lagoon-deep);
+}
+.localbuy p.lb-sub{
+  font-size:13.5px; color:var(--ink-soft); margin:0 0 22px; max-width:520px; line-height:1.6;
+}
+.lb-grid{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+  position:relative; z-index:1;
+}
+@media(max-width:640px){ .lb-grid{ grid-template-columns:1fr; } }
+.lb-card{
+  background:var(--white);
+  border:1px solid rgba(15,92,102,0.1);
+  border-radius:16px; padding:16px;
+  box-shadow:0 4px 14px rgba(15,92,102,0.06);
+}
+.lb-card h4{
+  margin:0 0 10px; font-size:14px; font-weight:800;
+  display:flex; align-items:center; gap:8px;
+  color:var(--lagoon-deep);
+}
+.lb-card ul{ margin:0; padding:0; list-style:none; }
+.lb-card li{
+  font-size:13.5px; padding:6px 0; position:relative;
+  color:var(--ink);
+  border-bottom:1px solid var(--sand-deep);
+}
+.lb-card li:last-child{ border-bottom:none; }
+.lb-card li .li-note{ display:block; font-size:11px; color:var(--ink-soft); opacity:.8; margin-top:1px; }
+.lb-cta{
+  margin-top:22px; text-align:center; position:relative; z-index:1;
+}
+.lb-cta a{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--coral); color:var(--white);
+  padding:12px 22px; border-radius:999px;
+  font-weight:800; font-size:14px; text-decoration:none;
+  box-shadow:0 6px 18px rgba(242,121,92,0.4);
+  transition:transform .15s ease;
+}
+.lb-cta a:hover{ transform:translateY(-2px); }
+
+/* ---------- footer ---------- */
+.footer{
+  max-width:820px; margin:50px auto 0; padding:0 20px;
+  text-align:center;
+}
+.footer .card-mini{
+  background:var(--white); border-radius:20px; padding:28px 24px;
+  box-shadow:var(--shadow);
+}
+.footer h3{
+  font-family:'Fraunces', serif; font-size:20px; color:var(--lagoon-deep); margin:0 0 8px;
+}
+.footer p{ color:var(--ink-soft); font-size:13.5px; margin:0 0 18px; }
+.footer .btn-row{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+.footer .fbtn{
+  display:flex; align-items:center; gap:8px;
+  padding:11px 20px; border-radius:999px;
+  font-weight:700; font-size:14px; text-decoration:none;
+  border:none; color:var(--white);
+  transition:transform .15s ease, filter .15s ease;
+}
+.footer .fbtn:hover{ transform:translateY(-2px); filter:brightness(1.05); }
+.footer .fbtn.instagram{
+  background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);
+}
+.footer .fbtn.threads{
+  background:#000;
+}
+.footer .fbtn svg{ width:16px; height:16px; }
+.footer .credit{ margin-top:22px; font-size:12px; color:#9fb2b5; }
+
+@media(max-width:480px){
+  .hero h1{ font-size:26px; }
+}
+</style>
+</head>
+<body>
+
+<div class="follow-bar">
+  <a class="follow-btn" href="https://www.instagram.com/zwei_xoxo/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+    IG
+  </a>
+  <a class="follow-btn" href="https://www.threads.com/@zwei_xoxo" target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161"/></svg>
+    Threads
+  </a>
+</div>
+
+<div class="hero">
+  <span class="eyebrow">CEBU PACKING GUIDE</span>
+  <h1>出發宿霧前，<br><span>先把行李收好</span> 🌊</h1>
+  <p class="sub">不管是要去遊學還是純旅遊，跟著清單一項項打勾，<br>出發前再也不怕漏東漏西。<br>點一下 ✓ 就能收進行李箱！</p>
+
+  <svg class="wave-divider" viewBox="0 0 800 40" preserveAspectRatio="none">
+    <path d="M0 20 Q 50 0 100 20 T 200 20 T 300 20 T 400 20 T 500 20 T 600 20 T 700 20 T 800 20 V40 H0 Z" fill="#bfe3d4" opacity="0.6"/>
+  </svg>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs" id="tabs" data-active="study">
+    <button class="tab-btn active" data-tab="study" onclick="switchTab('study')">
+      遊學 <span class="tag">STUDY IN CEBU</span>
+    </button>
+    <button class="tab-btn" data-tab="travel" onclick="switchTab('travel')">
+      旅遊 <span class="tag">TRAVEL ONLY</span>
+    </button>
+    <div class="tab-highlight"></div>
+  </div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span id="progressText">已收拾 0 / 0</span>
+    <span id="progressPct">0%</span>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<div class="container">
+  <div class="note-banner">🧳 <span><b>建議都在台灣先準備好！</b> 到宿霧當地也能買到部分用品，詳見下方「當地就能買」區塊。</span></div>
+  <div id="checklistArea"></div>
+
+  <div class="localbuy">
+    <div class="lb-head">
+      <span style="font-size:22px;">🛍️</span>
+      <h2>當地就能買</h2>
+    </div>
+    <p class="lb-sub">這些東西行李箱可以少帶一點，到宿霧當地超商、百貨公司幾乎都買得到。</p>
+    <div class="lb-grid" id="localBuyArea"></div>
+    <div class="lb-cta">
+      <a href="https://www.instagram.com/zwei_xoxo/" target="_blank" rel="noopener">
+        不知道當地品牌？私訊我幫你挑 💬
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="card-mini">
+    <h3>追蹤我，鎖定更多宿霧大小事 🌊</h3>
+    <p>宿霧旅遊、當地生活情報，都會持續更新在這裡，追蹤起來不錯過！</p>
+    <div class="btn-row">
+      <a class="fbtn instagram" href="https://www.instagram.com/zwei_xoxo/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        追蹤 @zwei_xoxo
+      </a>
+      <a class="fbtn threads" href="https://www.threads.com/@zwei_xoxo" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M6.321 6.016c-.27-.18-1.166-.802-1.166-.802.756-1.081 1.753-1.502 3.132-1.502.975 0 1.803.327 2.394.948s.928 1.509 1.005 2.644q.492.207.905.484c1.109.745 1.719 1.86 1.719 3.137 0 2.716-2.226 5.075-6.256 5.075C4.594 16 1 13.987 1 7.994 1 2.034 4.482 0 8.044 0 9.69 0 13.55.243 15 5.036l-1.36.353C12.516 1.974 10.163 1.43 8.006 1.43c-3.565 0-5.582 2.171-5.582 6.79 0 4.143 2.254 6.343 5.63 6.343 2.777 0 4.847-1.443 4.847-3.556 0-1.438-1.208-2.127-1.27-2.127-.236 1.234-.868 3.31-3.644 3.31-1.618 0-3.013-1.118-3.013-2.582 0-2.09 1.984-2.847 3.55-2.847.586 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 0-1.566.405-1.967.868ZM8.716 8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 1.168 1.02 0 2.067-.282 2.232-2.423a6.2 6.2 0 0 0-1.528-.161"/></svg>
+        Threads 追蹤
+      </a>
+    </div>
+    <div class="credit">整理 by 駱葳 Grace ・ 出發前再檢查一次最安心 ✨</div>
+  </div>
+</div>
+
+<script>
+// 格式說明：項目文字可用 "@@" 分隔，前面是主標籤，後面是顯示在下方的小字備註
+const DATA = {
+  study: {
+    categories: [
+      { icon:"📄", title:"重要文件類", items:[
+        "護照正本","來回機票影本","簽證","入學通知","護照影本／證件照備份雲端",
+        "當地 SIM 卡／上網卡@@訊號差可打電話","現金：美金","信用卡",
+        "提款卡@@先開通跨國提款","eTravel QR code 截圖","緊急聯絡人資訊卡"
+      ]},
+      { icon:"🧴", title:"個人用品類", items:[
+        "個人常備藥品","腸胃藥","益生菌","止瀉藥",
+        "感冒藥／退燒止痛藥","單拋小罐生理食鹽水","暈車藥","蚊蟲叮咬藥膏",
+        "隱形眼鏡／眼鏡","折疊傘","小量沐浴用品","過濾蓮蓬頭＋濾心",
+        "拋棄式床單","耳塞","少量袖珍包衛生紙","液態 OK 蹦",
+        "夾鏈袋／收納袋@@分裝小物","個人習慣的衛生棉／棉條"
+      ]},
+      { icon:"🔌", title:"3C 電器類", items:[
+        "行動電源","手機充電線","220V 吹風機","萬用轉接頭@@宿舍共用插座","筆電／平板＋充電線"
+      ]},
+      { icon:"👕", title:"衣物服飾類", items:[
+        "夏季日常衣物","運動鞋","快乾毛巾","防滑室外拖鞋／涼鞋","防曬防風薄外套",
+        "泳衣／水母衣","隨身小包包"
+      ]},
+      { icon:"🍜", title:"飲食相關", items:[
+        "台灣泡麵","耐熱泡麵碗","健身補給品隨身包","零食","白飯香鬆","飲料提袋、購物袋"
+      ]},
+      { icon:"💌", title:"其他", items:[
+        "可愛卡片"
+      ]},
+    ],
+    localBuy: [
+      { icon:"🧼", title:"清潔盥洗", items:["洗髮乳、潤髮乳","牙刷、牙膏","髮蠟、髮油","洗面乳"] },
+      { icon:"☀️", title:"防曬美妝", items:["太陽眼鏡","海洋友善防曬乳","曬後修復蘆薈膠"] },
+      { icon:"💊", title:"藥品保養", items:["止咳藥／止咳糖漿","隱眼保養液","面膜"] },
+      { icon:"🧻", title:"生活小物", items:["抽取式衛生紙","濕紙巾","防蚊液","洗衣袋"] },
+      { icon:"🎒", title:"3C／文具好物", items:["防水手機袋@@浮潛、跳島用","文具用品@@筆記本、原子筆"] },
+    ]
+  },
+  travel: {
+    categories: [
+      { icon:"📄", title:"重要文件類", items:[
+        "護照正本","來回機票影本","簽證","護照影本／證件照備份雲端",
+        "當地 SIM 卡／上網卡@@訊號差可打電話","現金：美金","提款卡@@先開通跨國提款",
+        "信用卡","eTravel QR code 截圖","緊急聯絡人資訊卡"
+      ]},
+      { icon:"🧴", title:"個人用品類", items:[
+        "個人藥品／化妝品","腸胃藥","止瀉藥","益生菌","感冒藥／退燒止痛藥",
+        "單拋小罐生理食鹽水","暈車藥","蚊蟲叮咬藥膏","隱形眼鏡／眼鏡",
+        "折疊傘","過濾蓮蓬頭＋濾心","拋棄式床單","耳塞","少量袖珍包衛生紙",
+        "液態 OK 蹦","夾鏈袋／收納袋@@分裝小物","個人習慣的衛生棉／棉條"
+      ]},
+      { icon:"🔌", title:"3C 電器類", items:[
+        "行動電源","手機充電線","220V 吹風機"
+      ]},
+      { icon:"👕", title:"衣物服飾類", items:[
+        "夏季日常衣物","運動鞋","快乾毛巾","防滑室外拖鞋／涼鞋","防曬防風薄外套",
+        "泳衣／水母衣","隨身小包包"
+      ]},
+      { icon:"🍜", title:"飲食相關", items:[
+        "台灣泡麵","零食","白飯香鬆"
+      ]},
+    ],
+    localBuy: [
+      { icon:"🧼", title:"清潔盥洗", items:["洗髮乳、潤髮乳","牙刷、牙膏","髮蠟、髮油"] },
+      { icon:"☀️", title:"防曬美妝", items:["太陽眼鏡","海洋友善防曬乳","曬後修復蘆薈膠"] },
+      { icon:"💊", title:"藥品保養", items:["止咳藥／止咳糖漿","隱眼保養液"] },
+      { icon:"🧻", title:"生活小物", items:["手持風扇","眼罩","濕紙巾","抽取式衛生紙","防蚊液"] },
+      { icon:"🎒", title:"3C 好物", items:["防水手機袋@@浮潛、跳島用"] },
+    ]
+  }
+};
+
+let currentTab = "study";
+let checkedState = { study:{}, travel:{} };
+
+function itemId(tab, catIdx, itemIdx){ return tab+"_"+catIdx+"_"+itemIdx; }
+
+function renderChecklist(tab){
+  const area = document.getElementById("checklistArea");
+  const lbArea = document.getElementById("localBuyArea");
+  const d = DATA[tab];
+  let html = '<div class="grid">';
+  d.categories.forEach((cat, ci) => {
+    html += `<div class="card"><div class="card-head"><span class="stamp">${cat.icon}</span><h3>${cat.title}</h3></div>`;
+    cat.items.forEach((it, ii) => {
+      const id = itemId(tab, ci, ii);
+      const checked = checkedState[tab][id] ? "checked" : "";
+      const [label, note] = it.split("@@");
+      html += `<label class="item" for="${id}">
+        <input type="checkbox" id="${id}" ${checked} onchange="toggleItem('${tab}','${id}')">
+        <span class="checkmark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+        <span class="label-wrap">
+          <span class="label">${label}</span>
+          ${note ? `<span class="note">${note}</span>` : ""}
+        </span>
+      </label>`;
+    });
+    html += `</div>`;
+  });
+  html += '</div>';
+  area.innerHTML = html;
+
+  let lbHtml = "";
+  d.localBuy.forEach(group => {
+    lbHtml += `<div class="lb-card"><h4>${group.icon} ${group.title}</h4><ul>`;
+    group.items.forEach(it => {
+      const [label, note] = it.split("@@");
+      lbHtml += `<li>${label}${note ? `<span class="li-note">${note}</span>` : ""}</li>`;
+    });
+    lbHtml += `</ul></div>`;
+  });
+  lbArea.innerHTML = lbHtml;
+
+  updateProgress();
+}
+
+function toggleItem(tab, id){
+  checkedState[tab][id] = document.getElementById(id).checked;
+  updateProgress();
+}
+
+function updateProgress(){
+  const d = DATA[currentTab];
+  let total = 0;
+  d.categories.forEach(c => total += c.items.length);
+  let done = Object.values(checkedState[currentTab]).filter(Boolean).length;
+  document.getElementById("progressText").textContent = `已收拾 ${done} / ${total}`;
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById("progressPct").textContent = pct + "%";
+  document.getElementById("progressFill").style.width = pct + "%";
+}
+
+function switchTab(tab){
+  currentTab = tab;
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab===tab));
+  document.getElementById("tabs").dataset.active = tab;
+  renderChecklist(tab);
+}
+
+renderChecklist("study");
+</script>
+
+</body>
+</html>
